@@ -1,0 +1,3182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monalisa Tech Solutions — Premium Property Investment Platform</title>
+<meta name="description" content="A curated property investment platform connecting serious investors with verified developments, transparent escrow, and elevated property discovery.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================
+   TOKENS
+=========================== */
+:root {
+  --ink:        #070707;
+  --ink-soft:   #161616;
+  --ink-mid:    #252525;
+  --ink-lift:   #343434;
+  --mist:       #F2EDE4;
+  --white:      #FFFFFF;
+  --gold:       #C4965A;
+  --gold-pale:  #DDB87A;
+  --gold-deep:  #9A6E35;
+  --gold-glow:  rgba(196,150,90,0.14);
+  --line:       rgba(196,150,90,0.16);
+  --line-w:     rgba(255,255,255,0.07);
+  --text-dim:   rgba(255,255,255,0.50);
+  --text-faint: rgba(255,255,255,0.30);
+  --radius:     0px;
+
+  /* spacing scale */
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 40px;
+  --s5: 64px;
+  --s6: 100px;
+  --s7: 140px;
+
+  /* type scale */
+  --t-xs:   10px;
+  --t-sm:   12px;
+  --t-base: 14px;
+  --t-md:   16px;
+  --t-lg:   20px;
+}
+
+/* ===========================
+   RESET & BASE
+=========================== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--ink);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: var(--t-md);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+::selection { background: var(--gold); color: var(--ink); }
+::-webkit-scrollbar { width: 2px; }
+::-webkit-scrollbar-track { background: var(--ink); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* ===========================
+   TYPE HELPERS
+=========================== */
+.t-display {
+  font-family: 'Cormorant', serif;
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+.t-display-i {
+  font-family: 'Cormorant', serif;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+}
+.t-eyebrow {
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.t-body {
+  font-size: var(--t-md);
+  font-weight: 300;
+  line-height: 1.78;
+  color: var(--text-dim);
+}
+
+/* ===========================
+   LAYOUT CONTAINERS
+=========================== */
+.wrap {
+  max-width: 1360px;
+  margin-inline: auto;
+  padding-inline: 60px;
+}
+@media (max-width: 1024px) { .wrap { padding-inline: 36px; } }
+@media (max-width: 640px)  { .wrap { padding-inline: 20px; } }
+
+/* ===========================
+   NAV
+=========================== */
+#nav {
+  position: fixed;
+  inset-block-start: 0;
+  inset-inline: 0;
+  z-index: 900;
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 48px;
+  transition: background 0.4s, border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+#nav.solid {
+  background: rgba(7,7,7,0.97);
+  border-color: var(--line);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-brand {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 3px;
+  flex-shrink: 0;
+}
+.nav-brand-name {
+  font-family: 'Cormorant', serif;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.nav-brand-tag {
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  transition: color 0.25s;
+}
+.nav-links a:hover { color: var(--gold); }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.nav-selects {
+  display: flex;
+  gap: 12px;
+}
+.nav-select {
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 10.5px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  color: var(--text-faint);
+  cursor: pointer;
+}
+.nav-select option { background: var(--ink-soft); }
+.nav-cta-pill {
+  display: inline-block;
+  padding: 9px 22px;
+  border: 1px solid var(--gold);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: background 0.25s, color 0.25s;
+}
+.nav-cta-pill:hover { background: var(--gold); color: var(--ink); }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 6px;
+  cursor: pointer;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--white);
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+@media (max-width: 1024px) {
+  #nav { padding-inline: 28px; }
+  .nav-links { display: none; }
+  .nav-selects { display: none; }
+  .nav-cta-pill { display: none; }
+  .nav-burger { display: flex; }
+}
+@media (max-width: 640px) { #nav { padding-inline: 20px; } }
+
+/* ===========================
+   MOBILE DRAWER
+=========================== */
+#drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 40px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s;
+}
+#drawer.open { opacity: 1; pointer-events: all; }
+.drawer-close {
+  position: absolute;
+  top: 22px;
+  right: 24px;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+}
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.drawer-links a {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(32px, 8vw, 52px);
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: color 0.2s, padding-left 0.2s;
+  display: block;
+}
+.drawer-links a:hover { color: var(--gold); padding-left: 10px; }
+.drawer-contact {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.drawer-contact a {
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+/* ===========================
+   HERO
+=========================== */
+#hero {
+  position: relative;
+  height: 100svh;
+  min-height: 620px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.hero-left {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 64px 80px 64px;
+  background: var(--ink);
+}
+.hero-left::after {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  right: -1px;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--gold) 50%, transparent);
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: aUp 0.9s 0.4s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.hero-eyebrow-rule {
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.hero-h1 {
+  font-size: clamp(38px, 4.6vw, 72px);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: aUp 0.9s 0.65s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.hero-sub {
+  font-size: clamp(13px, 1.3vw, 15px);
+  line-height: 1.8;
+  color: var(--text-dim);
+  max-width: 460px;
+  margin-bottom: 44px;
+  opacity: 0;
+  animation: aUp 0.9s 0.9s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  opacity: 0;
+  animation: aUp 0.9s 1.1s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.25s, transform 0.25s;
+}
+.btn-solid:hover { background: var(--gold-pale); transform: translateY(-2px); }
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.75);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: border-color 0.25s, color 0.25s, transform 0.25s;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+.btn-arrow { flex-shrink: 0; }
+
+/* hero right — cinematic image with floating data card */
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.07);
+  animation: heroScale 18s ease-out forwards;
+}
+.hero-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(7,7,7,0.3) 0%, rgba(7,7,7,0.05) 100%);
+}
+/* Floating performance card */
+.hero-data-card {
+  position: absolute;
+  bottom: 48px;
+  left: 36px;
+  right: 36px;
+  background: rgba(7,7,7,0.82);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  opacity: 0;
+  animation: aUp 0.9s 1.4s cubic-bezier(0.4,0,0.2,1) forwards;
+}
+.hdc-item {}
+.hdc-val {
+  font-family: 'Cormorant', serif;
+  font-size: 34px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 5px;
+}
+.hdc-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.hdc-divider {
+  width: 1px;
+  background: var(--line-w);
+  align-self: stretch;
+}
+
+@media (max-width: 900px) {
+  #hero {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  .hero-left {
+    grid-row: 2;
+    justify-content: flex-start;
+    padding: 48px 28px 60px;
+    min-height: auto;
+  }
+  .hero-left::after { display: none; }
+  .hero-right { height: 45svh; min-height: 280px; }
+  .hero-data-card { display: none; }
+  .hero-h1 { font-size: clamp(34px, 8vw, 52px); }
+}
+@media (max-width: 640px) {
+  .hero-left { padding: 36px 20px 52px; }
+  .hero-actions { flex-direction: column; }
+  .btn-solid, .btn-ghost { justify-content: center; text-align: center; }
+}
+
+/* ===========================
+   TICKER
+=========================== */
+.ticker-outer {
+  background: var(--gold);
+  overflow: hidden;
+  padding-block: 13px;
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: tickerMove 55s linear infinite;
+}
+.ticker-track:hover { animation-play-state: paused; }
+.ticker-seg {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+.t-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  padding-inline: 36px;
+  white-space: nowrap;
+}
+.t-sep {
+  color: rgba(0,0,0,0.25);
+  font-weight: 300;
+}
+.t-arrow { font-size: 9px; color: rgba(0,0,0,0.55); }
+
+/* ===========================
+   TRUST PILLARS  (4-up alternating rhythm)
+=========================== */
+#trust {
+  background: var(--ink-soft);
+  padding-block: 80px;
+  overflow: hidden;
+}
+.trust-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line-w);
+  border-left: 1px solid var(--line-w);
+}
+.trust-cell {
+  padding: 48px 36px;
+  border-right: 1px solid var(--line-w);
+  border-bottom: 1px solid var(--line-w);
+  transition: background 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+.trust-cell::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.trust-cell:hover { background: rgba(255,255,255,0.02); }
+.trust-cell:hover::before { transform: scaleX(1); }
+.trust-icon {
+  width: 36px;
+  height: 36px;
+  color: var(--gold);
+  margin-bottom: 22px;
+}
+.trust-cell h3 {
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Cormorant', serif;
+  margin-bottom: 10px;
+  color: var(--white);
+}
+.trust-cell p {
+  font-size: 12.5px;
+  line-height: 1.75;
+  color: var(--text-dim);
+}
+@media (max-width: 860px) { .trust-row { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .trust-row { grid-template-columns: 1fr; } }
+
+/* ===========================
+   SEARCH  (editorial, not generic)
+=========================== */
+#search-section {
+  background: var(--ink);
+  padding-block: 80px 100px;
+}
+.search-intro {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.search-intro-text {}
+.search-intro-note {
+  font-size: 12px;
+  color: var(--text-faint);
+  text-align: right;
+  max-width: 220px;
+  line-height: 1.6;
+}
+.search-panel {
+  background: var(--ink-soft);
+  border: 1px solid var(--line);
+}
+.search-mode-bar {
+  display: flex;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-bottom: 1px solid var(--line-w);
+  scrollbar-width: none;
+}
+.search-mode-bar::-webkit-scrollbar { display: none; }
+.smode {
+  flex-shrink: 0;
+  padding: 15px 24px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  font-family: 'Inter', sans-serif;
+}
+.smode.on { color: var(--gold); border-color: var(--gold); }
+.search-fields-row {
+  display: grid;
+  grid-template-columns: 2fr 1.4fr 0.9fr 0.9fr auto;
+}
+.sf {
+  padding: 22px 24px;
+  border-right: 1px solid var(--line-w);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.sf:last-child { border-right: none; padding: 0; }
+.sf-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.sf select, .sf input[type="text"] {
+  background: none;
+  border: none;
+  outline: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  color: var(--white);
+  width: 100%;
+  min-width: 0;
+  appearance: none;
+  cursor: pointer;
+}
+.sf select option { background: var(--ink-mid); }
+.sf input::placeholder { color: rgba(255,255,255,0.3); }
+.sf-btn {
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  padding: 0 44px;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.25s;
+  white-space: nowrap;
+  min-width: 100px;
+}
+.sf-btn:hover { background: var(--gold-pale); }
+.search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 24px;
+  border-top: 1px solid var(--line-w);
+}
+.stag {
+  padding: 7px 16px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  border: 1px solid var(--line-w);
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.stag:hover, .stag.on { color: var(--gold); border-color: var(--gold); background: var(--gold-glow); }
+@media (max-width: 860px) {
+  .search-intro { grid-template-columns: 1fr; }
+  .search-intro-note { text-align: left; max-width: none; }
+  .search-fields-row { grid-template-columns: 1fr 1fr; }
+  .sf:nth-child(4) { border-bottom: none; }
+  .sf-last-col { grid-column: span 2; border-right: none; }
+  .sf-btn { width: 100%; padding: 18px; }
+}
+@media (max-width: 480px) {
+  .search-fields-row { grid-template-columns: 1fr; }
+  .sf { border-right: none; border-bottom: 1px solid var(--line-w); }
+  .sf:last-child { border-bottom: none; }
+}
+
+/* ===========================
+   DEVELOPMENTS  (asymmetric, never 3-column cards)
+=========================== */
+#developments {
+  background: var(--ink-soft);
+  padding-block: var(--s7);
+}
+.dev-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 52px;
+  gap: 20px;
+}
+.link-underline {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+  transition: gap 0.25s;
+}
+.link-underline:hover { gap: 14px; }
+
+/* Mosaic: big left, two stacked right */
+.dev-mosaic {
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3px;
+  height: 680px;
+}
+.dev-tile {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.dev-tile:first-child { grid-row: span 2; }
+.dev-tile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.9s cubic-bezier(0.4,0,0.2,1);
+}
+.dev-tile:hover .dev-tile-img { transform: scale(1.05); }
+.dev-tile-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7,7,7,0.88) 0%, rgba(7,7,7,0.15) 55%, transparent 100%);
+}
+.dev-tile-body {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  padding: 32px;
+}
+.dev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 5px 10px;
+  margin-bottom: 12px;
+}
+.dev-tile-body h3 {
+  font-family: 'Cormorant', serif;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.dev-tile:first-child .dev-tile-body h3 { font-size: clamp(24px, 2.8vw, 38px); }
+.dev-tile:not(:first-child) .dev-tile-body h3 { font-size: clamp(18px, 2vw, 24px); }
+.dev-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.55);
+}
+.dev-meta-price { color: var(--gold); font-size: 12px; font-weight: 400; }
+.dev-meta-dot { opacity: 0.4; }
+@media (max-width: 860px) {
+  .dev-mosaic {
+    grid-template-columns: 1fr;
+    grid-template-rows: 400px 260px 260px;
+    height: auto;
+  }
+  .dev-tile:first-child { grid-row: span 1; }
+}
+@media (max-width: 480px) {
+  .dev-mosaic { grid-template-rows: 320px 220px 220px; gap: 2px; }
+  .dev-tile-body { padding: 20px; }
+}
+
+/* ===========================
+   INVESTMENT INTELLIGENCE  (data-forward, non-standard)
+=========================== */
+#intelligence {
+  background: var(--mist);
+  color: var(--ink);
+  padding-block: var(--s7);
+  overflow: hidden;
+}
+.intel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: start;
+}
+.intel-left {}
+.intel-left .t-eyebrow { color: var(--gold-deep); }
+.intel-h2 {
+  font-size: clamp(36px, 4vw, 60px);
+  color: var(--ink);
+  margin-block: 18px 24px;
+}
+.intel-body {
+  font-size: 15px;
+  color: rgba(7,7,7,0.58);
+  line-height: 1.8;
+  margin-bottom: 36px;
+}
+.btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--ink);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.25s;
+}
+.btn-dark:hover { background: var(--ink-mid); }
+.intel-kpis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 44px;
+}
+.kpi {
+  background: var(--ink);
+  padding: 30px 28px;
+}
+.kpi-val {
+  font-family: 'Cormorant', serif;
+  font-size: 44px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.kpi-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Chart */
+.intel-chart {
+  background: var(--ink);
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+}
+.chart-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  gap: 12px;
+}
+.chart-title {
+  font-family: 'Cormorant', serif;
+  font-size: 20px;
+  color: var(--white);
+  font-weight: 400;
+  line-height: 1.2;
+}
+.chart-pill {
+  flex-shrink: 0;
+  background: var(--gold-glow);
+  border: 1px solid var(--line);
+  color: var(--gold);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  padding: 6px 12px;
+}
+.chart-canvas {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--line-w);
+  min-height: 180px;
+}
+.bar-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: 100%;
+  justify-content: flex-end;
+}
+.bar-val-label {
+  font-size: 10px;
+  color: var(--gold);
+  font-weight: 500;
+  text-align: center;
+}
+.bar-fill {
+  width: 100%;
+  transition: height 1.4s cubic-bezier(0.4,0,0.2,1);
+  background: linear-gradient(to top, var(--gold-deep), var(--gold));
+}
+.bar-fill.muted {
+  background: rgba(255,255,255,0.08);
+}
+.bar-yr {
+  font-size: 9px;
+  color: var(--text-faint);
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+.chart-legend {
+  margin-top: 24px;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10.5px;
+  color: var(--text-dim);
+}
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.legend-dot.gold { background: var(--gold); }
+.legend-dot.dim { background: rgba(255,255,255,0.15); }
+
+@media (max-width: 900px) {
+  .intel-grid { grid-template-columns: 1fr; gap: 52px; }
+}
+@media (max-width: 480px) {
+  .intel-kpis { grid-template-columns: 1fr 1fr; gap: 2px; }
+  .kpi { padding: 22px 18px; }
+  .kpi-val { font-size: 36px; }
+}
+
+/* ===========================
+   GOLDEN VISA  (immersive split)
+=========================== */
+#golden-visa {
+  background: var(--ink);
+  padding-block: var(--s7);
+}
+.visa-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.visa-img-frame {
+  position: relative;
+}
+.visa-img-frame img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+.visa-img-frame::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  background: var(--gold);
+  z-index: -1;
+}
+.visa-content {}
+.visa-h2 {
+  font-size: clamp(36px, 3.8vw, 58px);
+  margin-block: 18px 22px;
+  line-height: 1.08;
+}
+.visa-intro { margin-bottom: 36px; }
+.visa-path {
+  border: 1px solid var(--line);
+  margin-bottom: 36px;
+}
+.visa-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--line-w);
+  transition: background 0.25s;
+}
+.visa-step:last-child { border-bottom: none; }
+.visa-step:hover { background: rgba(255,255,255,0.02); }
+.visa-num {
+  font-family: 'Cormorant', serif;
+  font-size: 28px;
+  font-weight: 300;
+  color: var(--gold);
+  opacity: 0.35;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 32px;
+}
+.visa-step-text h4 {
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 3px;
+  color: var(--white);
+}
+.visa-step-text p {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+@media (max-width: 860px) {
+  .visa-split { grid-template-columns: 1fr; gap: 52px; }
+  .visa-img-frame img { aspect-ratio: 16/9; }
+}
+
+/* ===========================
+   VIRTUAL EXPERIENCES  (3 staggered panels, not cards)
+=========================== */
+#virtual {
+  background: var(--ink-soft);
+  padding-block: var(--s7);
+}
+.virtual-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: end;
+  margin-bottom: 56px;
+}
+.virtual-head-note { color: var(--text-dim); font-size: 14px; line-height: 1.75; }
+
+.virtual-strip {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr 1fr;
+  gap: 3px;
+}
+.vt-panel {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.vt-panel:first-child { aspect-ratio: 3/4; }
+.vt-panel:not(:first-child) { aspect-ratio: 2/3; }
+.vt-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.85s cubic-bezier(0.4,0,0.2,1);
+}
+.vt-panel:hover .vt-img { transform: scale(1.07); }
+.vt-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(7,7,7,0.92) 0%, rgba(7,7,7,0.1) 50%);
+}
+.vt-body {
+  position: absolute;
+  inset-block-end: 0;
+  inset-inline: 0;
+  padding: 28px;
+}
+.vt-icon-ring {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+.vt-body h3 {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+.vt-body p {
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+.vt-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  transition: gap 0.2s;
+}
+.vt-panel:hover .vt-link { gap: 13px; }
+@media (max-width: 860px) {
+  .virtual-head { grid-template-columns: 1fr; }
+  .virtual-strip { grid-template-columns: 1fr 1fr; }
+  .vt-panel:first-child { aspect-ratio: 4/3; grid-column: span 2; }
+  .vt-panel:not(:first-child) { aspect-ratio: 4/3; }
+}
+@media (max-width: 480px) {
+  .virtual-strip { grid-template-columns: 1fr; gap: 2px; }
+  .vt-panel:first-child { grid-column: span 1; aspect-ratio: 4/3; }
+}
+
+/* ===========================
+   PAYMENT CALCULATOR  (editorial left, functional right)
+=========================== */
+#payment {
+  background: var(--ink);
+  padding-block: var(--s7);
+}
+.payment-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+}
+.payment-left {}
+.payment-left p { margin-block: 18px 0; }
+
+/* Timeline */
+.pay-timeline {
+  margin-top: 48px;
+  display: flex;
+  flex-direction: column;
+}
+.pay-event {
+  display: grid;
+  grid-template-columns: 48px 1fr auto;
+  gap: 16px;
+  align-items: start;
+  position: relative;
+  padding-bottom: 32px;
+}
+.pay-event:last-child { padding-bottom: 0; }
+.pay-event-spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+}
+.pay-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  flex-shrink: 0;
+  z-index: 1;
+}
+.pay-line {
+  flex: 1;
+  width: 1px;
+  background: var(--line-w);
+  margin-top: 6px;
+}
+.pay-event:last-child .pay-line { display: none; }
+.pay-event-info {}
+.pay-milestone {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.pay-event-info h4 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.pay-event-info p {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.pay-pct {
+  font-family: 'Cormorant', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: rgba(255,255,255,0.18);
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+/* Calc */
+.calc-widget {
+  background: var(--ink-soft);
+  border: 1px solid var(--line);
+}
+.calc-widget-head {
+  padding: 28px 32px;
+  border-bottom: 1px solid var(--line-w);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.calc-widget-head h3 {
+  font-family: 'Cormorant', serif;
+  font-size: 20px;
+  font-weight: 400;
+}
+.calc-widget-body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+.cf {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.cf-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.cf input, .cf select {
+  background: var(--ink);
+  border: 1px solid var(--line-w);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  padding: 13px 16px;
+  outline: none;
+  width: 100%;
+  appearance: none;
+  transition: border-color 0.25s;
+}
+.cf input:focus, .cf select:focus { border-color: var(--gold); }
+.cf select option { background: var(--ink-mid); }
+.calc-output {
+  background: var(--gold);
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.co-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.co-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(7,7,7,0.58);
+  flex-shrink: 0;
+}
+.co-val {
+  font-family: 'Cormorant', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--ink);
+  text-align: right;
+}
+
+@media (max-width: 860px) {
+  .payment-layout { grid-template-columns: 1fr; gap: 60px; }
+}
+
+/* ===========================
+   DEVELOPER SHOWCASE  (horizontal scroller on mobile, grid on desktop)
+=========================== */
+#developers {
+  background: var(--ink-soft);
+  padding-block: var(--s7);
+}
+.dev-showcase-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 52px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.devs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+.dev-card-block {
+  background: var(--ink);
+  padding: 40px 36px 36px;
+  border-bottom: 2px solid transparent;
+  transition: border-color 0.3s, background 0.3s;
+  cursor: pointer;
+}
+.dev-card-block:hover { border-color: var(--gold); background: rgba(255,255,255,0.015); }
+.dev-monogram {
+  width: 52px;
+  height: 52px;
+  background: var(--ink-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Cormorant', serif;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+.dev-card-block h3 {
+  font-family: 'Cormorant', serif;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 6px;
+}
+.dev-card-block .dev-loc {
+  font-size: 11px;
+  color: var(--text-faint);
+  letter-spacing: 0.06em;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.dev-figures {
+  display: flex;
+  gap: 20px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line-w);
+  flex-wrap: wrap;
+}
+.dev-fig {}
+.dev-fig-n {
+  font-family: 'Cormorant', serif;
+  font-size: 26px;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.dev-fig-l {
+  font-size: 9.5px;
+  color: var(--text-faint);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+@media (max-width: 860px) {
+  .devs-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 480px) {
+  .devs-grid { grid-template-columns: 1fr; }
+}
+
+/* ===========================
+   TESTIMONIALS  (full-width reveal, editorial)
+=========================== */
+#testimonials {
+  background: var(--ink);
+  padding-block: var(--s7);
+}
+.testi-head {
+  margin-bottom: 64px;
+}
+.testi-slider {
+  position: relative;
+  overflow: hidden;
+}
+.testi-track {
+  display: flex;
+  transition: transform 0.65s cubic-bezier(0.4,0,0.2,1);
+}
+.testi-slide {
+  min-width: 100%;
+  display: grid;
+  grid-template-columns: 5fr 6fr;
+  gap: 0;
+  border: 1px solid var(--line);
+}
+.testi-img-col {
+  position: relative;
+  overflow: hidden;
+  min-height: 420px;
+}
+.testi-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.testi-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: var(--gold);
+  color: var(--ink);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 7px 12px;
+}
+.testi-content-col {
+  padding: 52px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.testi-quote-mark {
+  font-family: 'Cormorant', serif;
+  font-size: 100px;
+  font-weight: 300;
+  color: var(--gold);
+  opacity: 0.2;
+  line-height: 0.7;
+  display: block;
+  margin-bottom: 28px;
+}
+.testi-quote {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.88);
+  margin-bottom: 36px;
+}
+.testi-author {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.testi-dash {
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.testi-name { font-size: 13px; font-weight: 500; color: var(--white); }
+.testi-role { font-size: 11px; color: var(--text-faint); margin-top: 2px; }
+.testi-nav-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+}
+.testi-btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-w);
+  background: none;
+  color: var(--white);
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.25s, background 0.25s;
+}
+.testi-btn:hover { border-color: var(--gold); background: var(--gold-glow); }
+.testi-pips {
+  display: flex;
+  gap: 7px;
+}
+.testi-pip {
+  width: 18px;
+  height: 2px;
+  background: rgba(255,255,255,0.15);
+  cursor: pointer;
+  transition: background 0.25s, width 0.25s;
+}
+.testi-pip.on { background: var(--gold); width: 28px; }
+@media (max-width: 860px) {
+  .testi-slide { grid-template-columns: 1fr; }
+  .testi-img-col { min-height: 260px; }
+  .testi-content-col { padding: 36px 28px; }
+  .testi-quote-mark { font-size: 70px; }
+}
+@media (max-width: 480px) {
+  .testi-content-col { padding: 28px 20px; }
+}
+
+/* ===========================
+   INVESTOR CIRCLE  (gold background — the conversion engine)
+=========================== */
+#club {
+  background: var(--gold);
+  padding-block: 100px;
+  overflow: hidden;
+}
+.club-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.club-left {}
+.club-eyebrow {
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(7,7,7,0.5);
+  margin-bottom: 22px;
+  display: block;
+}
+.club-h2 {
+  font-family: 'Cormorant', serif;
+  font-size: clamp(40px, 4.5vw, 64px);
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.05;
+  margin-bottom: 22px;
+}
+.club-h2 em { font-style: italic; }
+.club-desc {
+  font-size: 15px;
+  color: rgba(7,7,7,0.6);
+  line-height: 1.78;
+  max-width: 460px;
+  margin-bottom: 40px;
+}
+.btn-ink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: var(--ink);
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: background 0.25s;
+}
+.btn-ink:hover { background: var(--ink-mid); }
+
+.club-perks {
+  border: 1px solid rgba(7,7,7,0.15);
+}
+.club-perk {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 24px 28px;
+  border-bottom: 1px solid rgba(7,7,7,0.1);
+  transition: background 0.25s;
+}
+.club-perk:last-child { border-bottom: none; }
+.club-perk:hover { background: rgba(7,7,7,0.05); }
+.perk-sq {
+  width: 34px;
+  height: 34px;
+  background: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.club-perk-text h4 {
+  font-size: 13.5px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+.club-perk-text p {
+  font-size: 12px;
+  color: rgba(7,7,7,0.52);
+  line-height: 1.55;
+}
+@media (max-width: 860px) { .club-inner { grid-template-columns: 1fr; gap: 52px; } }
+
+/* ===========================
+   ESCROW TRANSPARENCY HUB
+=========================== */
+#escrow {
+  background: var(--ink-soft);
+  padding-block: var(--s7);
+}
+.escrow-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: start;
+}
+.escrow-left {}
+.escrow-left h2 { margin-block: 18px 22px; }
+.escrow-left p { margin-bottom: 22px; }
+.escrow-panel {
+  background: var(--ink);
+  border: 1px solid var(--line);
+}
+.ep-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  border-bottom: 1px solid var(--line-w);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.ep-title {
+  font-family: 'Cormorant', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--white);
+}
+.ep-live {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #4EB876;
+}
+.ep-live-dot {
+  width: 6px;
+  height: 6px;
+  background: #4EB876;
+  border-radius: 50%;
+  animation: blink 2.2s infinite;
+}
+@keyframes blink { 0%,100%{opacity:1}50%{opacity:0.35} }
+.ep-milestones {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.ep-row {}
+.ep-row-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+  gap: 12px;
+}
+.ep-row-name {
+  font-size: 12px;
+  color: rgba(255,255,255,0.65);
+  flex: 1;
+  min-width: 0;
+}
+.ep-row-pct {
+  font-size: 11px;
+  color: var(--gold);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+.ep-track {
+  width: 100%;
+  height: 3px;
+  background: rgba(255,255,255,0.06);
+}
+.ep-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--gold-deep), var(--gold));
+  transition: width 1.6s ease;
+}
+.ep-footer {
+  margin: 0 28px;
+  padding: 24px 0;
+  border-top: 1px solid var(--line-w);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+}
+.ep-total-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+.ep-total-val {
+  font-family: 'Cormorant', serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--gold);
+  text-align: right;
+}
+@media (max-width: 860px) {
+  .escrow-layout { grid-template-columns: 1fr; gap: 52px; }
+}
+
+/* ===========================
+   CONTACT  (asymmetric, premium feel)
+=========================== */
+#contact {
+  background: var(--ink);
+  padding-block: var(--s7);
+}
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 100px;
+  align-items: start;
+}
+.contact-left {}
+.contact-left h2 { margin-block: 18px 22px; }
+.contact-left .t-body { margin-bottom: 44px; }
+.contact-channels {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.channel-link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 26px;
+  background: var(--ink-soft);
+  border: 1px solid var(--line);
+  transition: border-color 0.25s, background 0.25s;
+}
+.channel-link:hover { border-color: var(--gold); background: rgba(196,150,90,0.04); }
+.channel-icon {
+  width: 42px;
+  height: 42px;
+  background: var(--gold);
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.channel-text {}
+.channel-text h4 { font-size: 13px; font-weight: 500; color: var(--white); margin-bottom: 2px; }
+.channel-text p { font-size: 11.5px; color: var(--text-dim); }
+
+.contact-form {}
+.frow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.fg {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  margin-bottom: 14px;
+}
+.fg:last-of-type { margin-bottom: 0; }
+.fg-label {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.fg input,
+.fg select,
+.fg textarea {
+  background: var(--ink-soft);
+  border: 1px solid var(--line-w);
+  color: var(--white);
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  font-weight: 300;
+  padding: 14px 18px;
+  outline: none;
+  width: 100%;
+  appearance: none;
+  resize: none;
+  transition: border-color 0.25s;
+}
+.fg input::placeholder, .fg textarea::placeholder { color: rgba(255,255,255,0.25); }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--gold); }
+.fg select option { background: var(--ink-mid); }
+.form-note {
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.form-cta {
+  width: 100%;
+  padding: 18px;
+  background: var(--gold);
+  color: var(--ink);
+  border: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  transition: background 0.25s;
+}
+.form-cta:hover { background: var(--gold-pale); }
+.form-cta:disabled { background: var(--gold-deep); }
+@media (max-width: 860px) {
+  .contact-layout { grid-template-columns: 1fr; gap: 60px; }
+  .frow { grid-template-columns: 1fr; gap: 0; }
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+  background: var(--ink-soft);
+  border-top: 1px solid var(--line-w);
+  padding-block: 72px 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr 1fr;
+  gap: 52px;
+  margin-bottom: 60px;
+}
+.footer-brand-name {
+  font-family: 'Cormorant', serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+.footer-brand-sub {
+  font-size: 8.5px;
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 18px;
+}
+.footer-brand-desc {
+  font-size: 12.5px;
+  line-height: 1.72;
+  color: var(--text-faint);
+  max-width: 280px;
+}
+.footer-col h5 {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-col ul a {
+  font-size: 12.5px;
+  color: var(--text-faint);
+  transition: color 0.2s;
+}
+.footer-col ul a:hover { color: var(--gold); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 36px;
+  border-top: 1px solid var(--line-w);
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-copy { font-size: 11.5px; color: var(--text-faint); }
+.footer-legal { display: flex; gap: 24px; flex-wrap: wrap; }
+.footer-legal a {
+  font-size: 11px;
+  color: var(--text-faint);
+  transition: color 0.2s;
+}
+.footer-legal a:hover { color: var(--gold); }
+@media (max-width: 860px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; }
+}
+
+/* ===========================
+   WA FLOAT BUTTON
+=========================== */
+.wa-float {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  z-index: 800;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+.wa-tooltip {
+  background: var(--ink-soft);
+  border: 1px solid var(--line);
+  color: var(--white);
+  font-size: 11px;
+  padding: 10px 16px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(8px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+.wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); pointer-events: all; }
+.wa-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #22c55e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 28px rgba(34,197,94,0.32);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+.wa-circle:hover { transform: scale(1.1); box-shadow: 0 10px 36px rgba(34,197,94,0.42); }
+.wa-circle svg { width: 27px; height: 27px; fill: white; }
+@media (max-width: 480px) {
+  .wa-float { bottom: 20px; right: 20px; }
+}
+
+/* ===========================
+   ANIMATIONS
+=========================== */
+@keyframes aUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes heroScale {
+  from { transform: scale(1.07); }
+  to   { transform: scale(1.0); }
+}
+@keyframes tickerMove {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Scroll reveal */
+.sr {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.75s cubic-bezier(0.4,0,0.2,1), transform 0.75s cubic-bezier(0.4,0,0.2,1);
+}
+.sr.d1 { transition-delay: 0.1s; }
+.sr.d2 { transition-delay: 0.2s; }
+.sr.d3 { transition-delay: 0.3s; }
+.sr.visible { opacity: 1; transform: translateY(0); }
+
+/* ===========================
+   MISC UTILITIES
+=========================== */
+.gold-text { color: var(--gold); }
+.mt-4 { margin-top: 40px; }
+.flex-center { display: flex; align-items: center; gap: 10px; }
+.eyebrow-row { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+.eyebrow-rule { width: 36px; height: 1px; background: var(--gold); flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<!-- ========= NAV ========= -->
+<nav id="nav">
+  <div class="nav-brand">
+    <span class="nav-brand-name">Monalisa Tech Solutions</span>
+    <span class="nav-brand-tag">Premium Property Intelligence</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#developments">Developments</a></li>
+    <li><a href="#intelligence">Investment</a></li>
+    <li><a href="#golden-visa">Golden Visa</a></li>
+    <li><a href="#virtual">Virtual Tours</a></li>
+    <li><a href="#payment">Plans</a></li>
+    <li><a href="#developers">Developers</a></li>
+    <li><a href="#escrow">Escrow</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-selects">
+      <select class="nav-select" id="currencySelect">
+        <option>AED</option><option>USD</option><option>EUR</option><option>GBP</option>
+      </select>
+      <select class="nav-select" id="measureSelect">
+        <option value="sqft">Sq Ft</option><option value="sqm">Sq M</option>
+      </select>
+    </div>
+    <a href="#contact" class="nav-cta-pill">Book Consultation</a>
+  </div>
+  <button class="nav-burger" id="navBurger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ========= DRAWER ========= -->
+<div id="drawer">
+  <button class="drawer-close" id="drawerClose">×</button>
+  <nav class="drawer-links">
+    <a href="#developments" onclick="closeDrawer()">Developments</a>
+    <a href="#intelligence" onclick="closeDrawer()">Investment Intelligence</a>
+    <a href="#golden-visa" onclick="closeDrawer()">Golden Visa</a>
+    <a href="#virtual" onclick="closeDrawer()">Virtual Experiences</a>
+    <a href="#payment" onclick="closeDrawer()">Payment Plans</a>
+    <a href="#developers" onclick="closeDrawer()">Developers</a>
+    <a href="#escrow" onclick="closeDrawer()">Escrow</a>
+    <a href="#contact" onclick="closeDrawer()">Contact</a>
+  </nav>
+  <div class="drawer-contact">
+    <a href="https://wa.me/256703953711" target="_blank">WhatsApp: +256 703 953 711</a>
+    <a href="mailto:kabuusumonalisa@gmail.com">kabuusumonalisa@gmail.com</a>
+  </div>
+</div>
+
+<!-- ========= HERO ========= -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="hero-eyebrow-rule"></div>
+      <span class="t-eyebrow">Premium Property Investment Platform</span>
+    </div>
+    <h1 class="t-display hero-h1">
+      Where Exceptional<br>
+      Property Opportunities<br>
+      Meet <span class="t-display-i">Intelligent</span><br>
+      Investment Decisions
+    </h1>
+    <p class="hero-sub">
+      A curated platform connecting serious investors, developers, and buyers with verified opportunities, full escrow transparency, and the kind of property intelligence that changes portfolios.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-solid">
+        Schedule a Private Consultation
+        <svg class="btn-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#developments" class="btn-ghost">
+        Explore Verified Developments
+        <svg class="btn-arrow" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-img"
+      src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1400&q=85"
+      alt="Luxury residential development">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-data-card">
+      <div class="hdc-item">
+        <div class="hdc-val">AED 2.4B</div>
+        <div class="hdc-label">Portfolio Managed</div>
+      </div>
+      <div class="hdc-divider"></div>
+      <div class="hdc-item">
+        <div class="hdc-val">340+</div>
+        <div class="hdc-label">Verified Listings</div>
+      </div>
+      <div class="hdc-divider"></div>
+      <div class="hdc-item">
+        <div class="hdc-val">8.4%</div>
+        <div class="hdc-label">Avg. Rental Yield</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= TICKER ========= -->
+<div class="ticker-outer" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack">
+    <div class="ticker-seg" id="tickerSeg">
+      <span class="t-item">Dubai Marina <span class="t-sep">·</span> AED 2,850/sqft <span class="t-arrow">↑ 12.4%</span></span>
+      <span class="t-item">Downtown Dubai <span class="t-sep">·</span> AED 3,640/sqft <span class="t-arrow">↑ 18.2%</span></span>
+      <span class="t-item">Palm Jumeirah <span class="t-sep">·</span> AED 4,200/sqft <span class="t-arrow">↑ 9.8%</span></span>
+      <span class="t-item">Jumeirah Bay Island <span class="t-sep">·</span> AED 5,100/sqft <span class="t-arrow">↑ 22.1%</span></span>
+      <span class="t-item">MBR City <span class="t-sep">·</span> AED 2,100/sqft <span class="t-arrow">↑ 15.6%</span></span>
+      <span class="t-item">DIFC Residences <span class="t-sep">·</span> AED 3,920/sqft <span class="t-arrow">↑ 8.3%</span></span>
+      <span class="t-item">Emaar Beachfront <span class="t-sep">·</span> AED 3,280/sqft <span class="t-arrow">↑ 14.7%</span></span>
+      <span class="t-item">Dubai Hills Estate <span class="t-sep">·</span> AED 1,850/sqft <span class="t-arrow">↑ 11.2%</span></span>
+      <span class="t-item">Creek Harbour <span class="t-sep">·</span> AED 2,460/sqft <span class="t-arrow">↑ 19.4%</span></span>
+      <span class="t-item">Business Bay <span class="t-sep">·</span> AED 2,240/sqft <span class="t-arrow">↑ 13.8%</span></span>
+    </div>
+  </div>
+</div>
+
+<!-- ========= TRUST PILLARS ========= -->
+<section id="trust">
+  <div class="wrap">
+    <div class="trust-row">
+      <div class="trust-cell sr">
+        <svg class="trust-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <path d="M18 3L5 9v9c0 8.3 5.7 16 13 18.2C25.3 34 31 26.3 31 18V9L18 3z"/>
+          <path d="M12 18l4 4 8-8"/>
+        </svg>
+        <h3>Every Listing Verified</h3>
+        <p>Title deed confirmed. Developer background checked. Construction progress independently assessed. Nothing appears here without passing all three.</p>
+      </div>
+      <div class="trust-cell sr d1">
+        <svg class="trust-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <rect x="5" y="5" width="26" height="26" rx="1"/>
+          <path d="M5 15h26M15 15v16"/>
+        </svg>
+        <h3>Escrow Visibility by Default</h3>
+        <p>Every buyer sees exactly where their funds sit, which milestones have been met, and what triggers the next release. No guesswork. No trust required — only evidence.</p>
+      </div>
+      <div class="trust-cell sr d2">
+        <svg class="trust-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <polyline points="5,22 12,14 18,18 25,10 31,6"/>
+          <path d="M5 31h26"/>
+        </svg>
+        <h3>Market Data, Not Projections</h3>
+        <p>Performance figures here come from closed transactions, not developer forecasts. Rental yield, appreciation rate, and liquidity scores are all sourced from verified sale records.</p>
+      </div>
+      <div class="trust-cell sr d3">
+        <svg class="trust-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.4">
+          <circle cx="18" cy="18" r="13"/>
+          <path d="M18 11v7l5 3"/>
+        </svg>
+        <h3>Investor-First Structure</h3>
+        <p>Built specifically for buyers who ask the right questions before they sign. Every dashboard, document, and data point is here because investors asked for it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= SEARCH ========= -->
+<section id="search-section">
+  <div class="wrap">
+    <div class="search-intro sr">
+      <div>
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">Advanced Property Discovery</span>
+        </div>
+        <h2 class="t-display" style="font-size:clamp(34px,4vw,54px); line-height:1.05; margin-top:12px;">
+          Find Your Next<br><span class="t-display-i">Investment</span>
+        </h2>
+      </div>
+      <p class="search-intro-note">340+ verified listings. Every district. Off-plan, ready, and resale.</p>
+    </div>
+
+    <div class="search-panel sr d1">
+      <div class="search-mode-bar">
+        <button class="smode on" onclick="setMode(this)">All Properties</button>
+        <button class="smode" onclick="setMode(this)">Off-Plan</button>
+        <button class="smode" onclick="setMode(this)">Ready Units</button>
+        <button class="smode" onclick="setMode(this)">Golden Visa Eligible</button>
+        <button class="smode" onclick="setMode(this)">Waterfront</button>
+        <button class="smode" onclick="setMode(this)">High-Yield Investment</button>
+      </div>
+      <div class="search-fields-row">
+        <div class="sf">
+          <span class="sf-label">Location</span>
+          <select>
+            <option value="">Community, district or developer…</option>
+            <option>Dubai Marina</option>
+            <option>Downtown Dubai</option>
+            <option>Palm Jumeirah</option>
+            <option>Dubai Hills Estate</option>
+            <option>Creek Harbour</option>
+            <option>Business Bay</option>
+            <option>DIFC</option>
+            <option>Emaar Beachfront</option>
+            <option>MBR City</option>
+          </select>
+        </div>
+        <div class="sf">
+          <span class="sf-label">Property Type</span>
+          <select>
+            <option value="">Apartment, Villa, Penthouse…</option>
+            <option>Apartment</option>
+            <option>Villa</option>
+            <option>Penthouse</option>
+            <option>Townhouse</option>
+            <option>Duplex</option>
+          </select>
+        </div>
+        <div class="sf">
+          <span class="sf-label">Budget</span>
+          <input type="text" placeholder="AED 500K – 5M">
+        </div>
+        <div class="sf">
+          <span class="sf-label">Bedrooms</span>
+          <select>
+            <option value="">Any</option>
+            <option>Studio</option>
+            <option>1 Bed</option>
+            <option>2 Bed</option>
+            <option>3 Bed</option>
+            <option>4+ Bed</option>
+          </select>
+        </div>
+        <div class="sf sf-last-col">
+          <button class="sf-btn">Search</button>
+        </div>
+      </div>
+      <div class="search-tags">
+        <button class="stag on">✓ Verified Only</button>
+        <button class="stag">Crypto Accepted</button>
+        <button class="stag">Payment Plan Available</button>
+        <button class="stag">Golden Visa Eligible</button>
+        <button class="stag">Waterfront</button>
+        <button class="stag">Yield +7%</button>
+        <button class="stag">Family Community</button>
+        <button class="stag">Luxury Collection</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= DEVELOPMENTS ========= -->
+<section id="developments">
+  <div class="wrap">
+    <div class="dev-header sr">
+      <div>
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">Verified Developments</span>
+        </div>
+        <h2 class="t-display" style="font-size:clamp(34px,4vw,56px); margin-top:10px;">
+          Properties That<br><span class="t-display-i">Perform</span>
+        </h2>
+      </div>
+      <a href="#" class="link-underline">
+        View All 340+ Listings
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="dev-mosaic sr d1">
+      <div class="dev-tile">
+        <img class="dev-tile-img" src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=900&q=80" alt="Marina Horizon Residences" loading="lazy">
+        <div class="dev-tile-scrim"></div>
+        <div class="dev-tile-body">
+          <div class="dev-badge">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11l3 3L22 4"/></svg>
+            Verified · Off-Plan
+          </div>
+          <h3>Marina Horizon Residences</h3>
+          <div class="dev-meta">
+            <span>Dubai Marina</span>
+            <span class="dev-meta-dot">·</span>
+            <span class="dev-meta-price">From AED 1.2M</span>
+            <span class="dev-meta-dot">·</span>
+            <span>Q2 2026 Handover</span>
+          </div>
+        </div>
+      </div>
+      <div class="dev-tile">
+        <img class="dev-tile-img" src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=700&q=80" alt="Crescent Bay Villas" loading="lazy">
+        <div class="dev-tile-scrim"></div>
+        <div class="dev-tile-body">
+          <div class="dev-badge">Golden Visa Eligible</div>
+          <h3>Crescent Bay Villas</h3>
+          <div class="dev-meta">
+            <span>Palm Jumeirah</span>
+            <span class="dev-meta-dot">·</span>
+            <span class="dev-meta-price">From AED 8.5M</span>
+          </div>
+        </div>
+      </div>
+      <div class="dev-tile">
+        <img class="dev-tile-img" src="https://images.unsplash.com/photo-1502005229762-cf1b2da7c5d6?w=700&q=80" alt="Creek Tower Residences" loading="lazy">
+        <div class="dev-tile-scrim"></div>
+        <div class="dev-tile-body">
+          <div class="dev-badge">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><path d="M9 11l3 3L22 4"/></svg>
+            Verified · Ready
+          </div>
+          <h3>Creek Tower Residences</h3>
+          <div class="dev-meta">
+            <span>Creek Harbour</span>
+            <span class="dev-meta-dot">·</span>
+            <span class="dev-meta-price">From AED 2.1M</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= INVESTMENT INTELLIGENCE ========= -->
+<section id="intelligence">
+  <div class="wrap">
+    <div class="intel-grid">
+      <div class="intel-left sr">
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule" style="background:var(--gold-deep)"></div>
+          <span class="t-eyebrow" style="color:var(--gold-deep)">Investment Intelligence</span>
+        </div>
+        <h2 class="t-display intel-h2">
+          Capital That Works<br>
+          <span class="t-display-i">Harder Than You</span>
+        </h2>
+        <p class="intel-body">
+          Dubai's residential market has delivered consistent appreciation across every major district for six consecutive years. Investors who secured verified off-plan projects at launch have routinely outperformed conventional asset classes — without the volatility.
+        </p>
+        <a href="#contact" class="btn-dark">
+          Request a Performance Analysis
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <div class="intel-kpis">
+          <div class="kpi sr d1">
+            <div class="kpi-val">8.4%</div>
+            <div class="kpi-label">Average Rental Yield</div>
+          </div>
+          <div class="kpi sr d1">
+            <div class="kpi-val">+24%</div>
+            <div class="kpi-label">Capital Growth — 2024</div>
+          </div>
+          <div class="kpi sr d2">
+            <div class="kpi-val">0%</div>
+            <div class="kpi-label">Property Tax</div>
+          </div>
+          <div class="kpi sr d2">
+            <div class="kpi-val">AED 2M</div>
+            <div class="kpi-label">Golden Visa Threshold</div>
+          </div>
+        </div>
+      </div>
+      <div class="intel-chart sr d2">
+        <div class="chart-head">
+          <div class="chart-title">Price Per Sq Ft<br>Downtown Dubai</div>
+          <div class="chart-pill">5-Year Trend</div>
+        </div>
+        <div class="chart-canvas" id="chartCanvas">
+          <div class="bar-col">
+            <span class="bar-val-label">2,140</span>
+            <div class="bar-fill muted" style="height:57%"></div>
+            <span class="bar-yr">2020</span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val-label">2,380</span>
+            <div class="bar-fill muted" style="height:65%"></div>
+            <span class="bar-yr">2021</span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val-label">2,720</span>
+            <div class="bar-fill muted" style="height:75%"></div>
+            <span class="bar-yr">2022</span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val-label">3,100</span>
+            <div class="bar-fill muted" style="height:85%"></div>
+            <span class="bar-yr">2023</span>
+          </div>
+          <div class="bar-col">
+            <span class="bar-val-label">3,640</span>
+            <div class="bar-fill" style="height:100%"></div>
+            <span class="bar-yr">2024</span>
+          </div>
+        </div>
+        <div class="chart-legend">
+          <div class="chart-legend-item">
+            <div class="legend-dot gold"></div>
+            Current Year
+          </div>
+          <div class="chart-legend-item">
+            <div class="legend-dot dim"></div>
+            Prior Years
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= GOLDEN VISA ========= -->
+<section id="golden-visa">
+  <div class="wrap">
+    <div class="visa-split">
+      <div class="visa-img-frame sr">
+        <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=800&q=80" alt="UAE property — Golden Visa eligible" loading="lazy">
+      </div>
+      <div class="visa-content sr d1">
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">UAE Golden Visa Programme</span>
+        </div>
+        <h2 class="t-display visa-h2">
+          Residency Through<br>
+          <span class="t-display-i">Property Ownership</span>
+        </h2>
+        <p class="t-body visa-intro">
+          A property investment above AED 2 million qualifies you and your immediate family for UAE residency — renewable every 10 years, with no income or employment requirement attached.
+        </p>
+        <div class="visa-path">
+          <div class="visa-step">
+            <div class="visa-num">01</div>
+            <div class="visa-step-text">
+              <h4>Eligibility Review</h4>
+              <p>Property must be fully or majority owned, with a confirmed value at or above the qualifying threshold.</p>
+            </div>
+          </div>
+          <div class="visa-step">
+            <div class="visa-num">02</div>
+            <div class="visa-step-text">
+              <h4>Select a Qualifying Unit</h4>
+              <p>Browse our curated Golden Visa inventory — every listing verified by title deed and valued independently.</p>
+            </div>
+          </div>
+          <div class="visa-step">
+            <div class="visa-num">03</div>
+            <div class="visa-step-text">
+              <h4>Application Coordination</h4>
+              <p>We manage the submission to the General Directorate of Residency. You track progress at every stage.</p>
+            </div>
+          </div>
+          <div class="visa-step">
+            <div class="visa-num">04</div>
+            <div class="visa-step-text">
+              <h4>10-Year Visa Confirmed</h4>
+              <p>Residency for you and your family. Property held, visa renewed — as long as ownership continues.</p>
+            </div>
+          </div>
+        </div>
+        <a href="#contact" class="btn-solid">
+          Begin Eligibility Assessment
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= VIRTUAL EXPERIENCES ========= -->
+<section id="virtual">
+  <div class="wrap">
+    <div class="virtual-head sr">
+      <div>
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">Virtual Experience Centre</span>
+        </div>
+        <h2 class="t-display" style="font-size:clamp(34px,4vw,56px); margin-top:10px; line-height:1.05;">
+          See It Before<br>
+          <span class="t-display-i">You Commit</span>
+        </h2>
+      </div>
+      <p class="virtual-head-note">
+        Serious investors shouldn't have to make six-figure decisions on the strength of a brochure. Every featured property on this platform has a full virtual experience — 3D walkthrough, interactive floor plan, and both day and night view modes.
+      </p>
+    </div>
+    <div class="virtual-strip sr d1">
+      <div class="vt-panel">
+        <img class="vt-img" src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=700&q=80" alt="Immersive 3D property walkthrough" loading="lazy">
+        <div class="vt-scrim"></div>
+        <div class="vt-body">
+          <div class="vt-icon-ring">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg>
+          </div>
+          <h3>Immersive 3D Walkthroughs</h3>
+          <p>Move through every room, check ceiling heights, test the sightlines. Built for investors who want certainty before contracts.</p>
+          <span class="vt-link">Launch Tour <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+      <div class="vt-panel">
+        <img class="vt-img" src="https://images.unsplash.com/photo-1484154218962-a197022b5858?w=700&q=80" alt="Interactive property floor plan" loading="lazy">
+        <div class="vt-scrim"></div>
+        <div class="vt-body">
+          <div class="vt-icon-ring">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 9h18M9 21V9"/></svg>
+          </div>
+          <h3>Interactive Floor Plans</h3>
+          <p>Measure every room, compare unit layouts side by side, and toggle between furnished and unfurnished views.</p>
+          <span class="vt-link">Explore Plans <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+      <div class="vt-panel">
+        <img class="vt-img" src="https://images.unsplash.com/photo-1511452885600-a3d2c9148a31?w=700&q=80" alt="Property day and night view modes" loading="lazy">
+        <div class="vt-scrim"></div>
+        <div class="vt-body">
+          <div class="vt-icon-ring">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <h3>Day & Night View Modes</h3>
+          <p>Evaluate natural light in the morning, city light at midnight. The view from the 32nd floor looks very different at 2am.</p>
+          <span class="vt-link">View Gallery <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= PAYMENT PLANS ========= -->
+<section id="payment">
+  <div class="wrap">
+    <div class="payment-layout">
+      <div class="payment-left sr">
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">Payment Plan Centre</span>
+        </div>
+        <h2 class="t-display" style="font-size:clamp(34px,4vw,56px); margin-top:10px; line-height:1.05;">
+          Structure Your<br>
+          <span class="t-display-i">Ownership Journey</span>
+        </h2>
+        <p class="t-body" style="margin-top:18px;">
+          Off-plan payment plans give investors the ability to lock in today's pricing and pay across a construction timeline. Every plan on this platform has milestone-linked releases — your money moves when the building does.
+        </p>
+        <div class="pay-timeline">
+          <div class="pay-event">
+            <div class="pay-event-spine">
+              <div class="pay-dot"></div>
+              <div class="pay-line"></div>
+            </div>
+            <div class="pay-event-info">
+              <div class="pay-milestone">Month 0 · Contract Signing</div>
+              <h4>Reservation Deposit</h4>
+              <p>Secures your unit and locks the price. Fully escrow-protected from day one.</p>
+            </div>
+            <div class="pay-pct">5%</div>
+          </div>
+          <div class="pay-event">
+            <div class="pay-event-spine">
+              <div class="pay-dot"></div>
+              <div class="pay-line"></div>
+            </div>
+            <div class="pay-event-info">
+              <div class="pay-milestone">Month 1 · SPA Signed</div>
+              <h4>Initial Down Payment</h4>
+              <p>Sales and Purchase Agreement signed. Title transferred through DLD.</p>
+            </div>
+            <div class="pay-pct">15%</div>
+          </div>
+          <div class="pay-event">
+            <div class="pay-event-spine">
+              <div class="pay-dot"></div>
+              <div class="pay-line"></div>
+            </div>
+            <div class="pay-event-info">
+              <div class="pay-milestone">Months 6–18 · Construction</div>
+              <h4>Progress Installments</h4>
+              <p>Payments tied to verified construction milestones — not to calendar dates.</p>
+            </div>
+            <div class="pay-pct">40%</div>
+          </div>
+          <div class="pay-event">
+            <div class="pay-event-spine">
+              <div class="pay-dot"></div>
+              <div class="pay-line"></div>
+            </div>
+            <div class="pay-event-info">
+              <div class="pay-milestone">Completion · Key Collection</div>
+              <h4>Handover Balance</h4>
+              <p>Final payment on key collection. Property is fully yours — ready to rent, hold, or resell.</p>
+            </div>
+            <div class="pay-pct">40%</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALCULATOR -->
+      <div class="calc-widget sr d2">
+        <div class="calc-widget-head">
+          <h3>Payment Calculator</h3>
+          <span class="t-eyebrow" id="calcCurLabel">AED</span>
+        </div>
+        <div class="calc-widget-body">
+          <div class="cf">
+            <label class="cf-label">Property Value</label>
+            <input type="number" id="cpv" value="2000000" oninput="runCalc()">
+          </div>
+          <div class="cf">
+            <label class="cf-label">Down Payment (%)</label>
+            <input type="number" id="cdp" value="20" min="5" max="60" oninput="runCalc()">
+          </div>
+          <div class="cf">
+            <label class="cf-label">Payment Structure</label>
+            <select id="cps" onchange="runCalc()">
+              <option value="60-40">60/40 — Construction / Handover</option>
+              <option value="50-50">50/50 — Equal Split</option>
+              <option value="30-70">30/70 — Post-Handover Dominant</option>
+            </select>
+          </div>
+          <div class="cf">
+            <label class="cf-label">Display Currency</label>
+            <select id="ccc" onchange="runCalc()">
+              <option>AED</option><option>USD</option><option>EUR</option><option>GBP</option>
+            </select>
+          </div>
+        </div>
+        <div class="calc-output" id="calcOut">
+          <div class="co-row">
+            <span class="co-label">Down Payment</span>
+            <span class="co-val" id="co1">AED 400,000</span>
+          </div>
+          <div class="co-row">
+            <span class="co-label">During Construction</span>
+            <span class="co-val" id="co2">AED 800,000</span>
+          </div>
+          <div class="co-row">
+            <span class="co-label">At Handover</span>
+            <span class="co-val" id="co3">AED 800,000</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= DEVELOPERS ========= -->
+<section id="developers">
+  <div class="wrap">
+    <div class="dev-showcase-head sr">
+      <div>
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">Developer Showcase</span>
+        </div>
+        <h2 class="t-display" style="font-size:clamp(34px,4vw,56px); margin-top:10px; line-height:1.05;">
+          Builders With<br>
+          <span class="t-display-i">Proven Records</span>
+        </h2>
+      </div>
+      <a href="#" class="link-underline">All Developers <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="devs-grid">
+      <div class="dev-card-block sr">
+        <div class="dev-monogram">EM</div>
+        <h3>Emaar Properties</h3>
+        <div class="dev-loc">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dubai · Founded 1997
+        </div>
+        <div class="dev-figures">
+          <div class="dev-fig">
+            <div class="dev-fig-n">118K+</div>
+            <div class="dev-fig-l">Units Delivered</div>
+          </div>
+          <div class="dev-fig">
+            <div class="dev-fig-n">36</div>
+            <div class="dev-fig-l">Countries</div>
+          </div>
+          <div class="dev-fig">
+            <div class="dev-fig-n">100%</div>
+            <div class="dev-fig-l">Completion Rate</div>
+          </div>
+        </div>
+      </div>
+      <div class="dev-card-block sr d1">
+        <div class="dev-monogram">MO</div>
+        <h3>Moro Development</h3>
+        <div class="dev-loc">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dubai · Founded 2006
+        </div>
+        <div class="dev-figures">
+          <div class="dev-fig">
+            <div class="dev-fig-n">42K</div>
+            <div class="dev-fig-l">Units Delivered</div>
+          </div>
+          <div class="dev-fig">
+            <div class="dev-fig-n">18</div>
+            <div class="dev-fig-l">Active Projects</div>
+          </div>
+          <div class="dev-fig">
+            <div class="dev-fig-n">98%</div>
+            <div class="dev-fig-l">On-Time Delivery</div>
+          </div>
+        </div>
+      </div>
+      <div class="dev-card-block sr d2">
+        <div class="dev-monogram">DM</div>
+        <h3>Damac Properties</h3>
+        <div class="dev-loc">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Dubai · Founded 2002
+        </div>
+        <div class="dev-figures">
+          <div class="dev-fig">
+            <div class="dev-fig-n">44K</div>
+            <div class="dev-fig-l">Units Delivered</div>
+          </div>
+          <div class="dev-fig">
+            <div class="dev-fig-n">26</div>
+            <div class="dev-fig-l">Active Projects</div>
+          </div>
+          <div class="dev-fig">
+            <div class="dev-fig-n">96%</div>
+            <div class="dev-fig-l">Completion Rate</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= TESTIMONIALS ========= -->
+<section id="testimonials">
+  <div class="wrap">
+    <div class="testi-head sr">
+      <div class="eyebrow-row">
+        <div class="eyebrow-rule"></div>
+        <span class="t-eyebrow">Investor Experiences</span>
+      </div>
+      <h2 class="t-display" style="font-size:clamp(34px,4vw,56px); margin-top:10px; line-height:1.05; max-width:520px;">
+        Decisions That<br>
+        <span class="t-display-i">Changed Everything</span>
+      </h2>
+    </div>
+    <div class="testi-slider sr d1">
+      <div class="testi-track" id="testiTrack">
+        <!-- Slide 1 -->
+        <div class="testi-slide">
+          <div class="testi-img-col">
+            <img class="testi-img" src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=80" alt="" loading="lazy">
+            <div class="testi-badge">Verified Investor</div>
+          </div>
+          <div class="testi-content-col">
+            <span class="testi-quote-mark">"</span>
+            <p class="testi-quote">I purchased off-plan in Dubai Marina 18 months ago. The platform gave me escrow visibility and construction progress at every stage. I refinanced before handover with 34% equity growth already on the books.</p>
+            <div class="testi-author">
+              <div class="testi-dash"></div>
+              <div>
+                <div class="testi-name">James Whitmore</div>
+                <div class="testi-role">Portfolio Investor — London, UK</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="testi-slide">
+          <div class="testi-img-col">
+            <img class="testi-img" src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="" loading="lazy">
+            <div class="testi-badge">Golden Visa Recipient</div>
+          </div>
+          <div class="testi-content-col">
+            <span class="testi-quote-mark">"</span>
+            <p class="testi-quote">From property selection to visa confirmation, not a single document went astray. My family and I have UAE residency and a property that adds value every quarter. The process was far simpler than I expected.</p>
+            <div class="testi-author">
+              <div class="testi-dash"></div>
+              <div>
+                <div class="testi-name">Dr. Priya Nair</div>
+                <div class="testi-role">Medical Specialist — Dubai, UAE</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="testi-slide">
+          <div class="testi-img-col">
+            <img class="testi-img" src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=80" alt="" loading="lazy">
+            <div class="testi-badge">Developer Partner</div>
+          </div>
+          <div class="testi-content-col">
+            <span class="testi-quote-mark">"</span>
+            <p class="testi-quote">The buyers who arrive through this platform have done their research. They come informed and ready. Our sales cycle shortened by nearly 60% — and the quality of conversation changed completely.</p>
+            <div class="testi-author">
+              <div class="testi-dash"></div>
+              <div>
+                <div class="testi-name">Ahmed Al Mansoori</div>
+                <div class="testi-role">CEO — Gulf Horizon Development Group</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-nav-row">
+        <button class="testi-btn" onclick="tSlide(-1)">←</button>
+        <button class="testi-btn" onclick="tSlide(1)">→</button>
+        <div class="testi-pips">
+          <div class="testi-pip on" onclick="tGo(0)"></div>
+          <div class="testi-pip" onclick="tGo(1)"></div>
+          <div class="testi-pip" onclick="tGo(2)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= INVESTOR CIRCLE ========= -->
+<section id="club">
+  <div class="wrap">
+    <div class="club-inner">
+      <div class="club-left sr">
+        <span class="club-eyebrow">By Invitation Only</span>
+        <h2 class="club-h2">The Private<br><em>Investor Circle</em></h2>
+        <p class="club-desc">
+          A small group of investors receive early access to off-plan launches before public release, private inventory from developer allocations, and quarterly market briefings from our research team. Membership is by introduction or consultation request only.
+        </p>
+        <a href="https://wa.me/256703953711?text=I'd%20like%20to%20enquire%20about%20the%20Private%20Investor%20Circle" class="btn-ink" target="_blank">
+          Request an Invitation
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="club-perks sr d1">
+        <div class="club-perk">
+          <div class="perk-sq">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+          <div class="club-perk-text">
+            <h4>Pre-Launch Access</h4>
+            <p>Units offered at pre-launch pricing, typically 8–15% below the public release figure.</p>
+          </div>
+        </div>
+        <div class="club-perk">
+          <div class="perk-sq">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <div class="club-perk-text">
+            <h4>Private Inventory</h4>
+            <p>Developer-allocated units not available through any public or broker channel.</p>
+          </div>
+        </div>
+        <div class="club-perk">
+          <div class="perk-sq">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
+          <div class="club-perk-text">
+            <h4>Quarterly Intelligence Reports</h4>
+            <p>Research-grade market analysis — yield forecasts, absorption rates, community comparisons.</p>
+          </div>
+        </div>
+        <div class="club-perk">
+          <div class="perk-sq">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+          </div>
+          <div class="club-perk-text">
+            <h4>Dedicated Investment Advisor</h4>
+            <p>One advisor. Assigned to your portfolio. Direct line, direct developer relationships.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= ESCROW ========= -->
+<section id="escrow">
+  <div class="wrap">
+    <div class="escrow-layout">
+      <div class="escrow-left sr">
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">Escrow Transparency Hub</span>
+        </div>
+        <h2 class="t-display" style="font-size:clamp(34px,4vw,54px); margin-top:10px; line-height:1.05;">
+          Your Funds.<br>
+          <span class="t-display-i">Your Visibility.</span>
+        </h2>
+        <p class="t-body" style="margin-block: 20px 18px;">
+          All buyer funds are deposited into RERA-regulated escrow accounts and released only when verified construction milestones are confirmed. No developer accesses funds ahead of the corresponding building phase.
+        </p>
+        <p class="t-body">
+          Every investor sees a live escrow dashboard — showing current fund balance, completed milestones, and what triggers the next release. Buyer protection isn't a promise here. It's a dashboard.
+        </p>
+        <a href="#contact" class="btn-ghost mt-4" style="display:inline-flex; margin-top:32px;">
+          Learn About Buyer Protections
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="escrow-panel sr d1">
+        <div class="ep-header">
+          <span class="ep-title">Marina Horizon — Escrow Status</span>
+          <span class="ep-live"><span class="ep-live-dot"></span>Live Data</span>
+        </div>
+        <div class="ep-milestones">
+          <div class="ep-row">
+            <div class="ep-row-top">
+              <span class="ep-row-name">Foundation &amp; Piling</span>
+              <span class="ep-row-pct">100%</span>
+            </div>
+            <div class="ep-track"><div class="ep-fill" style="width:100%"></div></div>
+          </div>
+          <div class="ep-row">
+            <div class="ep-row-top">
+              <span class="ep-row-name">Structural Frame</span>
+              <span class="ep-row-pct">100%</span>
+            </div>
+            <div class="ep-track"><div class="ep-fill" style="width:100%"></div></div>
+          </div>
+          <div class="ep-row">
+            <div class="ep-row-top">
+              <span class="ep-row-name">External Façade</span>
+              <span class="ep-row-pct">78%</span>
+            </div>
+            <div class="ep-track"><div class="ep-fill" style="width:78%"></div></div>
+          </div>
+          <div class="ep-row">
+            <div class="ep-row-top">
+              <span class="ep-row-name">MEP &amp; Internal Fit-Out</span>
+              <span class="ep-row-pct">54%</span>
+            </div>
+            <div class="ep-track"><div class="ep-fill" style="width:54%"></div></div>
+          </div>
+          <div class="ep-row">
+            <div class="ep-row-top">
+              <span class="ep-row-name">Finishing &amp; Handover Inspection</span>
+              <span class="ep-row-pct">12%</span>
+            </div>
+            <div class="ep-track"><div class="ep-fill" style="width:12%"></div></div>
+          </div>
+        </div>
+        <div class="ep-footer">
+          <span class="ep-total-label">Total in Escrow</span>
+          <span class="ep-total-val">AED 148.6M</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= CONTACT ========= -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-layout">
+      <div class="contact-left sr">
+        <div class="eyebrow-row">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">Private Consultations</span>
+        </div>
+        <h2 class="t-display" style="font-size:clamp(34px,4vw,56px); margin-top:10px; line-height:1.05;">
+          Speak With an<br>
+          <span class="t-display-i">Investment Specialist</span>
+        </h2>
+        <p class="t-body" style="margin-block:20px 40px;">
+          Whether you're entering the Dubai property market for the first time or adding to an existing portfolio, our team handles everything from initial shortlisting through to title deed collection.
+        </p>
+        <div class="contact-channels">
+          <a href="https://wa.me/256703953711?text=Hello%2C%20I'd%20like%20to%20schedule%20a%20private%20consultation" class="channel-link" target="_blank">
+            <div class="channel-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            </div>
+            <div class="channel-text">
+              <h4>WhatsApp — Primary Channel</h4>
+              <p>+256 703 953 711 · Responses within minutes</p>
+            </div>
+          </a>
+          <a href="mailto:kabuusumonalisa@gmail.com" class="channel-link">
+            <div class="channel-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="channel-text">
+              <h4>Email Inquiry</h4>
+              <p>kabuusumonalisa@gmail.com</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-form sr d1">
+        <div class="eyebrow-row" style="margin-bottom:28px;">
+          <div class="eyebrow-rule"></div>
+          <span class="t-eyebrow">Send a Direct Inquiry</span>
+        </div>
+        <div class="frow">
+          <div class="fg">
+            <label class="fg-label">First Name</label>
+            <input type="text" placeholder="First name">
+          </div>
+          <div class="fg">
+            <label class="fg-label">Last Name</label>
+            <input type="text" placeholder="Last name">
+          </div>
+        </div>
+        <div class="fg">
+          <label class="fg-label">Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="fg">
+          <label class="fg-label">WhatsApp / Phone</label>
+          <input type="tel" placeholder="+971 50 000 0000">
+        </div>
+        <div class="frow">
+          <div class="fg">
+            <label class="fg-label">Investment Intent</label>
+            <select>
+              <option value="">Select intent…</option>
+              <option>Buy to Rent</option>
+              <option>Buy to Resell</option>
+              <option>Golden Visa Qualification</option>
+              <option>Personal Residence</option>
+              <option>Portfolio Diversification</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label class="fg-label">Budget (AED)</label>
+            <select>
+              <option value="">Select range…</option>
+              <option>500K – 1M</option>
+              <option>1M – 2M</option>
+              <option>2M – 5M</option>
+              <option>5M – 10M</option>
+              <option>10M+</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg">
+          <label class="fg-label">Notes</label>
+          <textarea rows="3" placeholder="Specific communities, developers, or requirements…"></textarea>
+        </div>
+        <p class="form-note">Your inquiry goes directly to an investment specialist. We do not share your details with third parties or add you to mailing lists.</p>
+        <button class="form-cta" id="formCta" onclick="sendForm(this)">Submit Inquiry</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========= FOOTER ========= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand-name">Monalisa Tech Solutions</div>
+        <span class="footer-brand-sub">Premium Property Intelligence</span>
+        <p class="footer-brand-desc">A premium digital platform built for serious property investors, connecting capital with verified opportunities across the world's most active real estate markets.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Platform</h5>
+        <ul>
+          <li><a href="#developments">Verified Listings</a></li>
+          <li><a href="#search-section">Property Search</a></li>
+          <li><a href="#virtual">Virtual Tours</a></li>
+          <li><a href="#intelligence">Investment Intelligence</a></li>
+          <li><a href="#escrow">Escrow Tracker</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Services</h5>
+        <ul>
+          <li><a href="#golden-visa">Golden Visa</a></li>
+          <li><a href="#payment">Payment Plans</a></li>
+          <li><a href="#developers">Developer Profiles</a></li>
+          <li><a href="#club">Investor Circle</a></li>
+          <li><a href="#contact">Private Consultation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a href="https://wa.me/256703953711" target="_blank">WhatsApp: +256 703 953 711</a></li>
+          <li><a href="mailto:kabuusumonalisa@gmail.com">kabuusumonalisa@gmail.com</a></li>
+          <li><a href="#contact">Book a Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Monalisa Tech Solutions. All rights reserved. This is a demonstration platform.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Use</a>
+        <a href="#">RERA Compliance</a>
+        <a href="#">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========= WA FLOAT ========= -->
+<div class="wa-float">
+  <div class="wa-tooltip">Chat with an investment specialist</div>
+  <a href="https://wa.me/256703953711?text=Hello%2C%20I'd%20like%20to%20learn%20more%20about%20investment%20opportunities" class="wa-circle" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+</div>
+
+<!-- ========= SCRIPTS ========= -->
+<script>
+/* ── NAV scroll ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 50);
+}, { passive: true });
+
+/* ── Drawer ── */
+const drawer = document.getElementById('drawer');
+document.getElementById('navBurger').addEventListener('click', () => drawer.classList.add('open'));
+document.getElementById('drawerClose').addEventListener('click', closeDrawer);
+function closeDrawer() { drawer.classList.remove('open'); }
+
+/* ── Search mode tabs ── */
+function setMode(el) {
+  document.querySelectorAll('.smode').forEach(b => b.classList.remove('on'));
+  el.classList.add('on');
+}
+
+/* ── Search tag pills ── */
+document.querySelectorAll('.stag').forEach(t => {
+  t.addEventListener('click', () => t.classList.toggle('on'));
+});
+
+/* ── Ticker clone ── */
+(function() {
+  const seg = document.getElementById('tickerSeg');
+  const track = document.getElementById('tickerTrack');
+  if (seg && track) {
+    const clone = seg.cloneNode(true);
+    track.appendChild(clone);
+  }
+})();
+
+/* ── Scroll reveal ── */
+(function() {
+  const els = document.querySelectorAll('.sr');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08 });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ── Payment calculator ── */
+const FX = { AED: 1, USD: 0.2723, EUR: 0.2510, GBP: 0.2151 };
+function fmtMoney(n, cur) {
+  const v = Math.round(n * FX[cur]);
+  return cur + ' ' + v.toLocaleString();
+}
+function runCalc() {
+  const pv  = parseFloat(document.getElementById('cpv').value) || 0;
+  const dp  = Math.min(60, Math.max(5, parseFloat(document.getElementById('cdp').value) || 20));
+  const ps  = document.getElementById('cps').value;
+  const cur = document.getElementById('ccc').value;
+  const downAmt = pv * (dp / 100);
+  const rem = pv - downAmt;
+  let cRatio = 0.6, hRatio = 0.4;
+  if (ps === '50-50') { cRatio = 0.5; hRatio = 0.5; }
+  if (ps === '30-70') { cRatio = 0.3; hRatio = 0.7; }
+  document.getElementById('co1').textContent = fmtMoney(downAmt, cur);
+  document.getElementById('co2').textContent = fmtMoney(rem * cRatio, cur);
+  document.getElementById('co3').textContent = fmtMoney(rem * hRatio, cur);
+  document.getElementById('calcCurLabel').textContent = cur;
+}
+runCalc();
+document.getElementById('currencySelect').addEventListener('change', function() {
+  document.getElementById('ccc').value = this.value;
+  runCalc();
+});
+
+/* ── Testimonials ── */
+let tIdx = 0;
+const tTotal = 3;
+function tUpdateUI() {
+  document.getElementById('testiTrack').style.transform = `translateX(-${tIdx * 100}%)`;
+  document.querySelectorAll('.testi-pip').forEach((p, i) => p.classList.toggle('on', i === tIdx));
+}
+function tSlide(d) { tIdx = (tIdx + d + tTotal) % tTotal; tUpdateUI(); }
+function tGo(i)    { tIdx = i; tUpdateUI(); }
+setInterval(() => tSlide(1), 7000);
+
+/* ── Contact form ── */
+function sendForm(btn) {
+  const orig = btn.textContent;
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Inquiry Sent — We\'ll Be in Touch';
+    btn.style.background = 'var(--gold-deep)';
+    setTimeout(() => {
+      btn.textContent = orig;
+      btn.disabled = false;
+      btn.style.background = '';
+    }, 5000);
+  }, 1600);
+}
+</script>
+</body>
+</html>
